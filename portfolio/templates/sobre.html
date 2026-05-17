@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Sobre esta Aplicação</h2>
+
+<section>
+    <h3>Arquitetura MVT</h3>
+    <p>Esta aplicação segue o padrão MVT (Model-View-Template) do Django
+    O Model define a estrutura dos dados por exemplo, um Projeto tem título, descrição, imagem e tecnologias associadas.
+    A View recebe o pedido do utilizador, consulta a base de dados através do Model, e decide o que mostrar por exemplo, projetos_view obtém todos os projetos e passa-os ao template.
+    O Template é o ficheiro HTML que recebe esses dados e os apresenta ao utilizador.
+    Quando alguém abre /projetos/, o Django encaminha o pedido pela URL para a view projetos_view, que consulta o modelo Projeto, e devolve a página projetos.html com a lista preenchida.
+    </p>
+    <iframe width="560" height="315" src="https://www.youtube.com/watch?v=zkaXaIpEdqA" allowfullscreen></iframe>
+</section>
+
+<section>
+    <h3>Modelação</h3>
+    <p>Diagrama entidade-relação e descrição dos modelos
+     A aplicação tem os seguintes modelos principais: Projeto, Tecnologia, Competencia, Formacao, UnidadeCurricular, Licenciatura, Docente, TFC, MakingOf, Conquista. 
+     Um Projeto pertence a uma UnidadeCurricular (ForeignKey) e pode usar várias Tecnologia (ManyToManyField). 
+     Uma Competencia relaciona-se com várias Tecnologia e vários Projeto. 
+     Uma Formacao associa-se a Tecnologia e Competencia. O modelo MakingOf documenta o processo de desenvolvimento e pode estar ligado a um Projeto, Tecnologia ou UnidadeCurricular.   
+    </p>
+</section>
+
+<section>
+    <h3>Tecnologias Usadas</h3>
+    <p>Django — framework Python usado para criar os modelos, views e URLs da aplicação.
+    HTML/CSS — utilizados nos templates para estruturar e estilizar as páginas.
+    SQLite — base de dados usada por omissão no Django para guardar todos os registos.
+    Git/GitHub — controlo de versões do projeto e repositório remoto para guardar o código.</p>
+</section>
+
+<section>
+    <h3>Repositório GitHub</h3>
+    <p>O repositório contém todo o código-fonte desta aplicação Django.
+    Usar Git permite guardar o histórico de alterações, recuperar versões anteriores e ter o código guardado em segurança fora do computador local.</p>
+    <a href="https://github.com/22405039-ManuelSousa/portfolio">Ver repositório</a>
+</section>
+{% endblock %}

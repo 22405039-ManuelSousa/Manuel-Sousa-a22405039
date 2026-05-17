@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Artigos</h2>
+
+{% if autor %}
+    <a href="{% url 'artigo_criar' %}">+ Novo Artigo</a>
+{% endif %}
+
+{% for artigo in artigos %}
+<article>
+    <h3>{{ artigo.autor.username }} — {{ artigo.data_criacao|date:"d/m/Y" }}</h3>
+    <p>{{ artigo.texto }}</p>
+    {% if artigo.fotografia %}<img src="{{ artigo.fotografia.url }}" width="300">{% endif %}
+    {% if artigo.link %}<p><a href="{{ artigo.link }}">Ver link</a></p>{% endif %}
+
+    <p>
+        {{ artigo.likes.count }} gosto(s)
+        {% if user.is_authenticated %}
+            <a href="{% url 'artigo_like' artigo.pk %}">
+                {% if user in artigo.likes.all %}Remover gosto{% else %}Gostei{% endif %}
+            </a>
+        {% endif %}
+        {% if autor and artigo.autor == user %}
+            | <a href="{% url 'artigo_editar' artigo.pk %}">Editar</a>
+        {% endif %}
+    </p>
+
+    <h4>Comentários</h4>
+    {% for c in artigo.comentarios.all %}
+        <p><strong>{{ c.autor.username }}</strong> ({{ c.data|date:"d/m/Y" }}): {{ c.texto }}</p>
+    {% empty %}
+        <p>Sem comentários.</p>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+    <form method="post" action="{% url 'comentario_criar' artigo.pk %}">
+        {% csrf_token %}
+        <input type="text" name="texto" placeholder="Escreve um comentário...">
+        <button type="submit">Comentar</button>
+    </form>
+    {% endif %}
+</article>
+<hr>
+{% empty %}
+    <p>Sem artigos publicados.</p>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>TFCs</h2>
+{% for tfc in tfcs %}
+    <article>
+        <h3>{{ tfc.titulo }}</h3>
+        <p><strong>Aluno:</strong> {{ tfc.aluno }}</p>
+        <p>
+            {{ tfc.ano }} 
+            {% if tfc.licenciatura %}| {{ tfc.licenciatura }}{% endif %}
+            {% if tfc.orientador %}| Orientador: {{ tfc.orientador }}{% endif %}
+        </p>
+        <small>Tecnologias: 
+            {% for t in tfc.tecnologias.all %}{{ t.nome }}{% if not forloop.last %}, {% endif %}{% empty %}Nenhuma{% endfor %}
+        </small>
+    </article>
+{% empty %}
+    <p>Sem TFCs registados.</p>
+{% endfor %}
+{% endblock %}

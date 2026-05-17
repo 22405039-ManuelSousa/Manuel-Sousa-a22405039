@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Unidades Curriculares</h2>
+{% for uc in ucs %}
+    <article>
+        <h3>{{ uc.nome }} ({{ uc.sigla }})</h3>
+        <p>{{ uc.ano }}º Ano | {{ uc.semestre }}º Semestre</p>
+        <p>Docentes: {% for d in uc.docentes.all %}{{ d.nome }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    </article>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Competências</h2>
+{% for c in competencias %}
+    <article>
+        <h3>{{ c.nome }}</h3>
+        <p><strong>{{ c.tipo }}</strong> | Nível: {{ c.nivel }}</p>
+        {% if c.descricao %}<p>{{ c.descricao }}</p>{% endif %}
+        <small>Tecnologias: 
+            {% for t in c.tecnologias.all %}{{ t.nome }}{% if not forloop.last %}, {% endif %}{% empty %}Nenhuma{% endfor %}
+        </small>
+        {% if gestor %}
+            <a href="{% url 'competencia_editar' c.pk %}">Editar</a>
+            <a href="{% url 'competencia_apagar' c.pk %}">Apagar</a>
+        {% endif %}
+    </article>
+{% empty %}
+    <p>Sem competências registadas.</p>
+{% endfor %}
+{% if gestor %}
+    <a href="{% url 'competencia_criar' %}">+ Nova Competência</a>
+{% endif %}
+{% endblock %}

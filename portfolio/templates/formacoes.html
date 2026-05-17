@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Formações</h2>
+{% for f in formacoes %}
+    <article>
+        <h3>{{ f.nome }}</h3>
+        <p>{{ f.tipo }} | {{ f.data_inicio }} - {{ f.data_fim|default:"Presente" }}</p>
+        <small>Tecnologias: 
+            {% for t in f.tecnologias.all %}{{ t.nome }}{% if not forloop.last %}, {% endif %}{% empty %}Nenhuma{% endfor %}
+        </small>
+        {% if gestor %}
+            <a href="{% url 'formacao_editar' f.pk %}">Editar</a>
+            <a href="{% url 'formacao_apagar' f.pk %}">Apagar</a>
+        {% endif %}
+    </article>
+{% empty %}
+    <p>Sem formações registadas.</p>
+{% endfor %}
+{% if gestor %}
+    <a href="{% url 'formacao_criar' %}">+ Nova Formação</a>
+{% endif %}
+{% endblock %}

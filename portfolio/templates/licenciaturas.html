@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Licenciaturas</h2>
+{% for l in licenciaturas %}
+    <article>
+        <h3>{{ l.sigla }} – {{ l.nome }}</h3>
+        <p>Total de ECTS: {{ l.ects }}</p>
+    </article>
+{% empty %}
+    <p>Sem licenciaturas registadas.</p>
+{% endfor %}
+{% endblock %}

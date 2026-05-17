@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Making Of</h2>
+{% for m in makingof %}
+    <article>
+        <h3>{{ m.titulo }}</h3>
+        <p><strong>Entidade:</strong> {{ m.entidade_relacionada }}</p>
+        <p>{{ m.descricao }}</p>
+        <footer>
+            <small>Contexto: 
+                {{ m.projeto|default:"" }} {{ m.tecnologia|default:"" }} {{ m.unidade_curricular|default:"" }}
+            </small>
+        </footer>
+    </article>
+{% empty %}
+    <p>Sem conteúdos de Making Of.</p>
+{% endfor %}
+{% endblock %}

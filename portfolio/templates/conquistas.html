@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Conquistas</h2>
+{% for c in conquistas %}
+    <article>
+        <h3>{{ c.titulo }}</h3>
+        <p>{{ c.tipo }}{% if c.data %} — {{ c.data }}{% endif %}</p>
+        <small>Projetos Relacionados: 
+            {% for p in c.projetos.all %}{{ p.titulo }}{% if not forloop.last %}, {% endif %}{% empty %}Nenhum{% endfor %}
+        </small>
+    </article>
+{% empty %}
+    <p>Sem conquistas registadas.</p>
+{% endfor %}
+{% endblock %}

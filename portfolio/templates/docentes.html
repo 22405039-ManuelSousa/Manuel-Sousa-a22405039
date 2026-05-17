@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Docentes</h2>
+<div class="grid">
+    {% for d in docentes %}
+    <article>
+        {% if d.foto %}<img src="{{ d.foto.url }}" alt="{{ d.nome }}">{% endif %}
+        <h3>{{ d.nome }}</h3>
+        <p>{{ d.email }}</p>
+    </article>
+    {% endfor %}
+</div>
+{% endblock %}
