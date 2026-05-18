@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-$t5l_jg4u)270n&*9oxbgo6z#2@bt7ud#sjjfz30u##u!3z_f1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.pythonanywhere.com', '.pw.deisi.ulusofona.pt']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.pythonanywhere.com', '.pw.deisi.ulusofona.pt', '.up.railway.app']
 
 CSRF_TRUSTED_ORIGINS = [
     "https://manuel-sousa-a22405039.pw.deisi.ulusofona.pt",
