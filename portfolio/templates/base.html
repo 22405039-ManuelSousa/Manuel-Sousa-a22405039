@@ -6,38 +6,77 @@
     <title>Portfólio</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}">
+    <style>
+        .hamburger {
+            display: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+        }
+
+        @media (max-width: 600px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav.mostrar {
+                display: flex;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <a href="{% url 'tecnologias' %}">Tecnologias</a>
-        <a href="{% url 'projetos' %}">Projetos</a>
-        <a href="{% url 'tfcs' %}">TFCs</a>
-        <a href="{% url 'competencias' %}">Competências</a>
-        <a href="{% url 'formacoes' %}">Formações</a>
-        <a href="{% url 'conquistas' %}">Conquistas</a>
-        <a href="{% url 'makingof' %}">Making Of</a>
-        <a href="{% url 'docentes' %}">Docentes</a>
-        <a href="{% url 'licenciaturas' %}">Licenciaturas</a>
-        <a href="{% url 'unidades_curriculares' %}">UCs</a>
-        <a href="{% url 'sobre' %}">Sobre</a>
-        <a href="{% url 'artigos' %}">Artigos</a>
+    <header style="display: flex; justify-content: space-between; align-items: center; background: #2c3e50; padding: 0.5rem 1rem; flex-wrap: wrap;">
+        <span class="hamburger">&#9776;</span>
+        <nav>
+            <a href="{% url 'tecnologias' %}">Tecnologias</a>
+            <a href="{% url 'projetos' %}">Projetos</a>
+            <a href="{% url 'tfcs' %}">TFCs</a>
+            <a href="{% url 'competencias' %}">Competências</a>
+            <a href="{% url 'formacoes' %}">Formações</a>
+            <a href="{% url 'conquistas' %}">Conquistas</a>
+            <a href="{% url 'makingof' %}">Making Of</a>
+            <a href="{% url 'docentes' %}">Docentes</a>
+            <a href="{% url 'licenciaturas' %}">Licenciaturas</a>
+            <a href="{% url 'unidades_curriculares' %}">UCs</a>
+            <a href="{% url 'sobre' %}">Sobre</a>
+            <a href="{% url 'artigos' %}">Artigos</a>
 
-        {% if user.is_authenticated %}
-            <span>Olá, {{ user.username }}</span>
-            <a href="{% url 'logout' %}">Logout</a>
-        {% else %}
-            <a href="{% url 'login' %}">Login</a>
-        {% endif %}
-
-        {% if not user.is_authenticated %}
-            <a href="{% url 'registo_autor' %}">Registar como Autor</a>
-        {% endif %}
-    </nav>
+            {% if user.is_authenticated %}
+                <span style="color: white;">Olá, {{ user.username }}</span>
+                <a href="{% url 'logout' %}">Logout</a>
+            {% else %}
+                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'registo_autor' %}">Registar como Autor</a>
+            {% endif %}
+        </nav>
+    </header>
 
     <main>
         {% block content %}{% endblock %}
     </main>
 
     <footer><p>&copy; 2026</p></footer>
+
+   <script>
+  const menu = document.querySelector('nav');
+  const botao = document.querySelector('.hamburger');
+
+  botao.addEventListener('click', () => {
+    menu.classList.toggle('mostrar');
+  });
+</script>
 </body>
 </html>

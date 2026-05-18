@@ -6,12 +6,36 @@
         <h3>{{ m.titulo }}</h3>
         <p><strong>Entidade:</strong> {{ m.entidade_relacionada }}</p>
         <p>{{ m.descricao }}</p>
+
+        {% if m.decisoes %}
+            <p><strong>Decisões tomadas:</strong> {{ m.decisoes }}</p>
+        {% endif %}
+
+        {% if m.erros %}
+            <p><strong>Dificuldades e erros:</strong> {{ m.erros }}</p>
+        {% endif %}
+
+        {% if m.uso_ia %}
+            <p><strong>Uso de IA Generativa:</strong> {{ m.uso_ia }}</p>
+        {% endif %}
+
+        {% if m.foto_caderno %}
+            <p><strong>Caderno:</strong></p>
+            <img src="{{ m.foto_caderno.url }}" width="500">
+        {% endif %}
+
+        {% if m.der %}
+            <p><strong>Diagrama ER:</strong></p>
+            <img src="{{ m.der.url }}" width="500">
+        {% endif %}
+
         <footer>
-            <small>Contexto: 
+            <small>Contexto:
                 {{ m.projeto|default:"" }} {{ m.tecnologia|default:"" }} {{ m.unidade_curricular|default:"" }}
             </small>
         </footer>
     </article>
+    <hr>
 {% empty %}
     <p>Sem conteúdos de Making Of.</p>
 {% endfor %}

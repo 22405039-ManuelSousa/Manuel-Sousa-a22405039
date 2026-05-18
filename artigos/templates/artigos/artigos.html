@@ -25,20 +25,47 @@
         {% endif %}
     </p>
 
+    <p>
+        <strong>Avaliação média:</strong>
+        {% if artigo.media_rating %}
+            {{ artigo.media_rating|floatformat:1 }} / 5
+        {% else %}
+            Sem avaliações ainda.
+        {% endif %}
+    </p>
+    <form method="post" action="{% url 'artigo_avaliar' artigo.pk %}">
+        {% csrf_token %}
+        <label>Avaliar:
+            <select name="valor">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </label>
+        <button type="submit">Avaliar</button>
+    </form>
+
     <h4>Comentários</h4>
     {% for c in artigo.comentarios.all %}
-        <p><strong>{{ c.autor.username }}</strong> ({{ c.data|date:"d/m/Y" }}): {{ c.texto }}</p>
+        <p>
+            <strong>{% if c.autor %}{{ c.autor.username }}{% else %}{{ c.nome|default:"Anónimo" }}{% endif %}</strong>
+            ({{ c.data|date:"d/m/Y" }}): {{ c.texto }}
+        </p>
     {% empty %}
         <p>Sem comentários.</p>
     {% endfor %}
 
-    {% if user.is_authenticated %}
     <form method="post" action="{% url 'comentario_criar' artigo.pk %}">
         {% csrf_token %}
+        {% if not user.is_authenticated %}
+            <input type="text" name="nome" placeholder="O teu nome (opcional)">
+        {% endif %}
         <input type="text" name="texto" placeholder="Escreve um comentário...">
         <button type="submit">Comentar</button>
     </form>
-    {% endif %}
+
 </article>
 <hr>
 {% empty %}

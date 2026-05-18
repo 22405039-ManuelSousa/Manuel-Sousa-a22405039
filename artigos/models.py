@@ -14,9 +14,15 @@ class Artigo(models.Model):
 
 class Comentario(models.Model):
     artigo = models.ForeignKey(Artigo, on_delete=models.CASCADE, related_name='comentarios')
-    autor = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comentarios')
+    autor = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True, related_name='comentarios')
     texto = models.TextField()
+    nome = models.CharField(max_length=100, blank=True)
     data = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.autor.username} em {self.artigo}"
+    
+class Avaliacao(models.Model):
+    artigo = models.ForeignKey(Artigo, on_delete=models.CASCADE, related_name='avaliacoes')
+    valor = models.IntegerField()
+    data = models.DateTimeField(auto_now_add=True)

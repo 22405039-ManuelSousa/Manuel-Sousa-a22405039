@@ -1,5 +1,5 @@
 from django import forms
-from .models import Artigo, Comentario
+from .models import Artigo, Comentario, Avaliacao
 
 class ArtigoForm(forms.ModelForm):
     class Meta:
@@ -9,4 +9,9 @@ class ArtigoForm(forms.ModelForm):
 class ComentarioForm(forms.ModelForm):
     class Meta:
         model = Comentario
-        fields = ['texto']
+        fields = ['nome', 'texto']
+
+class AvaliacaoForm(forms.ModelForm):
+    class Meta:
+        model = Avaliacao
+        fields = ['valor']

@@ -7,6 +7,9 @@ from .forms import ProjetoForm, TecnologiaForm, CompetenciaForm, FormacaoForm
 from .models import (Docente, Licenciatura, UnidadeCurricular, Tecnologia,
                      Projeto, TFC, Competencia, Formacao, MakingOf, Conquista)
 
+def landing_view(request):
+    return render(request, 'landing.html')
+
 def docentes_view(request):
     docentes = Docente.objects.all()
     return render(request, 'docentes.html', {'docentes': docentes})

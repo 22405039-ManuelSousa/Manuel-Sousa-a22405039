@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuel Sousa Portfólio</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #1a1a2e;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #3498db;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #a0aec0;
+            margin-bottom: 2.5rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid #3498db;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        nav a:hover {
+            background: #3498db;
+        }
+    </style>
+    {% load static %}
+</head>
+<body>
+    <img class="hero-img" src="{% static 'portfolio/foto.jpeg' %}" alt="Foto de perfil">
+    <h1>Manuel Sousa</h1>
+    <p>Estudante de Engenharia Informática · Portfólio de Desenvolvimento Web</p>
+    <nav>
+        <a href="/tecnologias/">Tecnologias</a>
+        <a href="/projetos/">Projetos</a>
+        <a href="/artigos/">Artigos</a>
+        <a href="/sobre/">Sobre</a>
+        <a href="/makingof/">Making Of</a>
+    </nav>
+</body>
+</html>

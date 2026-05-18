@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.pythonanywhere.com', '.pw.deisi.ulu
 
 CSRF_TRUSTED_ORIGINS = [
     "https://manuel-sousa-a22405039.pw.deisi.ulusofona.pt",
+    "https://manuel-sousa-a22405039-production.up.railway.app",
 ]
 
 # Application definition
@@ -139,7 +140,7 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'manuelbarrososousa@gmail.com'
-EMAIL_HOST_PASSWORD = 'bvlj zmoa fuuo auwz'
+EMAIL_HOST_PASSWORD = 'vfkv fbbb cnos cwtl'
 
 import environ
 import os
