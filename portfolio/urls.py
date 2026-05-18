@@ -30,4 +30,5 @@ urlpatterns = [
     path('formacoes/<int:pk>/apagar/', views.formacao_apagar, name='formacao_apagar'),
 
     path('sobre/', views.sobre_view, name='sobre'),
+    path('videos/', views.videos_view, name='videos'),
 ]

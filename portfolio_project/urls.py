@@ -26,5 +26,6 @@ urlpatterns = [
     path("portfolio/", include("portfolio.urls")),
     path("accounts/", include("accounts.urls")),
     path("artigos/", include("artigos.urls")),
+    path('accounts/', include('allauth.urls')),
     path("", include("portfolio.urls")),
 ]

@@ -10,6 +10,9 @@ from .models import (Docente, Licenciatura, UnidadeCurricular, Tecnologia,
 def landing_view(request):
     return render(request, 'landing.html')
 
+def videos_view(request):
+    return render(request, 'videos.html')
+
 def docentes_view(request):
     docentes = Docente.objects.all()
     return render(request, 'docentes.html', {'docentes': docentes})
