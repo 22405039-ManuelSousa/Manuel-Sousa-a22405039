@@ -28,7 +28,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.pythonanywhere.com', '.pw.deisi.ulusofona.pt']
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://manuelsousa.a22405039.pw.deisi.ulusofona.pt",
+    "https://manuel-sousa-a22405039.pw.deisi.ulusofona.pt",
 ]
 
 # Application definition
